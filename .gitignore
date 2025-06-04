@@ -2,6 +2,8 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+.exit
+exit.pub
 
 ### Eclipse ###
 .apt_generated
