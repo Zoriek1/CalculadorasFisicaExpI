@@ -176,6 +176,12 @@ public class ReportNumber5CalculatorForConstantK {
                 SomaWeigthsKs += weigthsKs[i];
             }
 
+            double incertezaTotalK1 = (1/SomaWeigthsK1);
+            double incertezaTotalK2 = (1/SomaWeigthsK2);
+            double incertezaTotalKs = (1/SomaWeigthsKs);
+
+
+
 
             //Media ponderada.
 
@@ -188,13 +194,27 @@ public class ReportNumber5CalculatorForConstantK {
                 K2Ponderada += (K2[i]*weigthsK2[i])/SomaWeigthsK2;
                 KsPonderada += (Ks[i]*weigthsKs[i])/SomaWeigthsKs;
             }
+            double incertezaTotalKsPrevisto = Math.sqrt(Math.pow(incertezaTotalK1,2)+Math.pow(incertezaTotalK2,2));
+
+
             System.out.println();
             System.out.println("- (K1, K2, K3) média ponderada em relação a a cada um");
-            System.out.println("K1 médio: "+K1Ponderada+ " +/- " + (1/SomaWeigthsK1));
-            System.out.println("K1 médio: "+K2Ponderada+ " +/- " + (1/SomaWeigthsK2));
-            System.out.println("K1 médio: "+KsPonderada+ " +/- " + (1/SomaWeigthsKs));
+            System.out.println("K1, média Ponderada: "+K1Ponderada+ " +/- " + incertezaTotalK1);
+            System.out.println("K2, média Ponderada: "+K2Ponderada+ " +/- " + incertezaTotalK2);
+            System.out.println("Ks Experimental, média Ponderada: "+KsPonderada+ " +/- " + incertezaTotalKs);
+            System.out.println("Ks Previsto, média Ponderada: "+KsPrevistoMedio+ " +/- " + incertezaTotalKsPrevisto);
 
+            //Com a média ponderada podemos Fazer o teste de compátibilidade Ks (Previsto x Experimental)
 
+            double testeDeCompatibilidade = Math.abs(KsPonderada - KsPrevistoMedio)/Math.sqrt(Math.pow(incertezaTotalKs,2)+Math.pow(incertezaTotalKsPrevisto,2));
+            System.out.println();
+            if (testeDeCompatibilidade < 2.5){
+                System.out.println("Os valores são compátiveis e seu Valor K é: " + testeDeCompatibilidade);
+
+            }
+            else {
+                System.out.println("Os Valores não são compátiveis e seu valor K é: "+ testeDeCompatibilidade);
+            }
         }
         }
 
