@@ -1,4 +1,4 @@
-package ExperimentalPhysicsReport;
+package ExperimentalPhysicsReport5;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -176,9 +176,9 @@ public class ReportNumber5CalculatorForConstantK {
                 SomaWeigthsKs += weigthsKs[i];
             }
 
-            double incertezaTotalK1 = (1/SomaWeigthsK1);
-            double incertezaTotalK2 = (1/SomaWeigthsK2);
-            double incertezaTotalKs = (1/SomaWeigthsKs);
+            double incertezaTotalK1 = (1/Math.sqrt(SomaWeigthsK1));
+            double incertezaTotalK2 = (1/Math.sqrt(SomaWeigthsK2));
+            double incertezaTotalKs = (1/Math.sqrt(SomaWeigthsKs));
 
 
 
