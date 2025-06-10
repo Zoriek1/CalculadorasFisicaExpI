@@ -1,5 +1,8 @@
 package ExperimentalPhysicsReport5;
 
+import Incertezas.IncertezaTipoA;
+import Incertezas.IncertezaTipoB;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -72,22 +75,21 @@ public class ReportNumber5CalculatorForConstantK {
             double[] K1 = new double[l1s.length];
             double[] K2 = new double[l1s.length];
             double[] Ks = new double[l1s.length];
-            double K1Medio = 0;
-            double K2Medio = 0;
-            double KsMedio = 0;
+            double K1Medio = IncertezaTipoA.calcularMedia(K1);
+            double K2Medio = IncertezaTipoA.calcularMedia(K2);
+            double KsMedio = IncertezaTipoA.calcularMedia(Ks);
 
             for (int i = 1; i < l1s.length; i++) {
                 K1[i] = peso[i] / (l1s[i] - l1_zero);
                 K2[i] = peso[i] / (l2s[i] - l2_zero);
                 Ks[i] = peso[i] / (l3s[i] - l3_zero);
-
             }
 
-            for (int i = 0; i < K1.length; i++) {
-                K1Medio += K1[i]/ ((K1.length)-1);
-                K2Medio += K2[i]/ ((K2.length)-1);
-                KsMedio += Ks[i]/ ((Ks.length)-1);
-            }
+
+                K1Medio /=((K1.length)-1);
+                K2Medio /=((K2.length)-1);
+                KsMedio /=((Ks.length)-1);
+
             System.out.println("###### K1, K2 e Ks ######");
 
             for (int i = 1; i < l1s.length; i++) {
@@ -137,8 +139,8 @@ public class ReportNumber5CalculatorForConstantK {
             double resolucaoBalanca = 0.001; //(kg)
             double resolucaoRegua = 0.003; //(metros)
 
-            double incertezaRegua = resolucaoRegua/Math.sqrt(3);
-            double incertezaBalanca = resolucaoBalanca/Math.sqrt(3);
+            double incertezaRegua = IncertezaTipoB.calcularIncertezaPadrao(resolucaoBalanca);
+            double incertezaBalanca = IncertezaTipoB.calcularIncertezaPadrao(resolucaoRegua);
             double incertezaGravidade = 0.000023;
 
             // Calculando as incertezas de K

@@ -129,6 +129,18 @@ public class ReportNumber6CalculatorForConstantGama {
         System.out.printf("Gama em h22: (%.4f ± %.4f)cm⁻¹\n", gamaMedio2, incertezaGama2);
         System.out.printf("Gama em h23: (%.4f ± %.4f)cm⁻¹\n", gamaMedio3, incertezaGama3);
 
+        double CompatibilidadeG1G2 = Math.abs(gamaMedio1 - gamaMedio2)/Math.sqrt(Math.pow(incertezaGama1,2)+Math.pow(incertezaGama2,2));
+        double CompatibilidadeG2G3 = Math.abs(gamaMedio2 - gamaMedio3)/Math.sqrt(Math.pow(incertezaGama2,2)+Math.pow(incertezaGama3,2));
+        double CompatibilidadeG3G1 = Math.abs(gamaMedio3 - gamaMedio1)/Math.sqrt(Math.pow(incertezaGama3,2)+Math.pow(incertezaGama1,2));
+
+        if (CompatibilidadeG1G2 < 2.5 && CompatibilidadeG2G3 < 2.5 && CompatibilidadeG3G1 < 2.5){
+            System.out.println("Os valores são compátiveis e seu Valor K é: " + CompatibilidadeG1G2+ "  "+ CompatibilidadeG2G3 +" "+ CompatibilidadeG3G1);
+
+        }
+        else {
+            System.out.println("Os Valores não são compátiveis e seu valor K é: "+ CompatibilidadeG1G2+ "  "+ CompatibilidadeG2G3 +" "+ CompatibilidadeG3G1);
+        }
+
 
 
     }}

@@ -4,6 +4,8 @@ out/
 !**/src/test/**/out/
 .exit
 exit.pub
+.idea
+untitled2.iml
 
 ### Eclipse ###
 .apt_generated
