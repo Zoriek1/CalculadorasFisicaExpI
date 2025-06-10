@@ -10,7 +10,7 @@
 
         public static void main(String[] args) {
 
-            String caminhoArquivo = "/home/caio-henrique/Downloads/Exp06_Conservacao_da_Energia.csv";
+            String caminhoArquivo = "/home/caio-henrique/IdeaProjects/CalculatorElasticConstant/CSV/Exp06_Conservacao_da_Energia.csv";
             List<Double> coluna1 = new ArrayList<>();
             List<Double> coluna2 = new ArrayList<>();
             List<Double> coluna3 = new ArrayList<>();
