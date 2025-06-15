@@ -1,6 +1,6 @@
 L1    ;30; medida de L1 em cm
-dL1   ; 0.5 ; resolu��ǜo de L1 em cm
-dL2   ;0.8; resolu��ǜo de L2 em cm
+dL1   ; 0.5 ; resoluÇõÇœo de L1 em cm
+dL2   ;0.8; resoluÇõÇœo de L2 em cm
 O1-L2 ; O2-L2 ; O3-L2
 13.1 ;17.2; 21.3
 14.8;16.0;14.3
