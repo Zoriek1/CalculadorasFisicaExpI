@@ -38,12 +38,12 @@ public class ReportNumber5CalculatorForConstantK {
                             coluna3.add(valorColuna3);
                             coluna4.add(valorColuna4);
                         } catch (NumberFormatException e) {
-
+                            System.err.println("Ocorreu um erro de leitura: " + e.getClass().getSimpleName() + " - " + e.getMessage());
                         }
                     }
                 }
             } catch (IOException e) {
-                System.err.println("Ocorreu um erro de leitura: " + e.getClass().getSimpleName() + " - " + e.getMessage());;
+                System.err.println("Ocorreu um erro de leitura: " + e.getClass().getSimpleName() + " - " + e.getMessage());
             }
 
             double[] l1s = coluna1.stream().mapToDouble(Double::doubleValue).toArray();
