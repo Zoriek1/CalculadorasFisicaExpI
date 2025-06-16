@@ -55,13 +55,10 @@
 
             //Incerteza tipo A Delta x
             double mediaDeltax1 = IncertezaTipoA.calcularMedia(Deltax1);
-            double desvioAmostralDeltaX1 = IncertezaTipoA.calcularDesvioPadrao(Deltax1);
             double incertezaDeltax1 = IncertezaTipoA.calcularIncertezaPadrao(Deltax1);
             double mediaDeltax2 = IncertezaTipoA.calcularMedia(Deltax2);
-            double desvioAmostralDeltaX2 = IncertezaTipoA.calcularDesvioPadrao(Deltax2);
             double incertezaDeltax2 = IncertezaTipoA.calcularIncertezaPadrao(Deltax2);
             double mediaDeltax3 = IncertezaTipoA.calcularMedia(Deltax3);
-            double desvioAmostralDeltaX3 = IncertezaTipoA.calcularDesvioPadrao(Deltax3);
             double incertezaDeltax3 = IncertezaTipoA.calcularIncertezaPadrao(Deltax3);
 
 

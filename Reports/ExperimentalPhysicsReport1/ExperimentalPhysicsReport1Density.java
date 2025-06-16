@@ -69,7 +69,7 @@ public class ExperimentalPhysicsReport1Density {
         double incertezaBecker = IncertezaTipoB.calcularIncertezaPadrao(resolucaoBecker);
         double incertezaMassaCilindro = IncertezaTipoB.calcularIncertezaPadrao(resolucaoMassaCilindro);
 
-        double incertezaCombinadaDensidade1 = Densiade1*(Math.sqrt(Math.pow(resolucaoBecker/VolumeBecker,2)+Math.pow(resolucaoMassaCilindro/massaCilindro,2)));
+        double incertezaCombinadaDensidade1 = Densiade1*(Math.sqrt(Math.pow(incertezaBecker/VolumeBecker,2)+Math.pow(incertezaMassaCilindro/massaCilindro,2)));
 
 
         System.out.printf("Densidade_1 = %.2f +/- %.2f g/cm^3 \n",Densiade1, incertezaCombinadaDensidade1);
@@ -86,7 +86,7 @@ public class ExperimentalPhysicsReport1Density {
         double resolucaoFitaMetrica = resolucoesArray[7]/10; //0,1cm ao inves de 1mm.
         double incertezaFitaMetrica = IncertezaTipoB.calcularIncertezaPadrao(resolucaoFitaMetrica);
 
-        double incertezaCombinadaDensidade2 = densidade2*(Math.sqrt(2*Math.pow(incertezaFitaMetrica/CircunerenciaFitaMetricaCilindro,2)+Math.pow(resolucaoMassaCilindro/massaCilindro,2)+Math.pow(incertezaFitaMetrica/AlturaFitaMetricaCilindro,2)));
+        double incertezaCombinadaDensidade2 = densidade2*(Math.sqrt(2*Math.pow(incertezaFitaMetrica/CircunerenciaFitaMetricaCilindro,2)+Math.pow(incertezaMassaCilindro/massaCilindro,2)+Math.pow(incertezaFitaMetrica/AlturaFitaMetricaCilindro,2)));
 
         System.out.printf("Densidade_2 = %.2f +/- %.2f g/cm^3 \n",densidade2, incertezaCombinadaDensidade2);
 
@@ -103,7 +103,7 @@ public class ExperimentalPhysicsReport1Density {
         double resolucaoPaquimetro = resolucoesArray[5]/10;
         double incertezaPaquimetro = IncertezaTipoB.calcularIncertezaPadrao(resolucaoPaquimetro);
 
-        double incertezaCombinadaDensidade3 = densidade3*(Math.sqrt(2*Math.pow(incertezaPaquimetro/diametroCilindroPaquimetro,2)+Math.pow(resolucaoMassaCilindro/massaCilindro,2)+Math.pow(incertezaPaquimetro/alturaCilindroPaquimetro,2)));
+        double incertezaCombinadaDensidade3 = densidade3*(Math.sqrt(2*Math.pow(incertezaPaquimetro/diametroCilindroPaquimetro,2)+Math.pow(incertezaMassaCilindro/massaCilindro,2)+Math.pow(incertezaPaquimetro/alturaCilindroPaquimetro,2)));
 
         System.out.printf("Densidade_2 = %.2f +/- %.2f g/cm^3 \n",densidade3, incertezaCombinadaDensidade3);
 
