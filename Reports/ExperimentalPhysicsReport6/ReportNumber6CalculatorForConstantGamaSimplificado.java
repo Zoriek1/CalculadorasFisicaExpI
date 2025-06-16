@@ -40,7 +40,7 @@
                     }
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                System.err.println("Ocorreu um erro de leitura: " + e.getClass().getSimpleName() + " - " + e.getMessage());;
             }
 
             double[] Deltax1 = coluna1.stream().mapToDouble(Double::doubleValue).toArray();

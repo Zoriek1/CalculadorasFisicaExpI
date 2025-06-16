@@ -43,7 +43,7 @@ public class ReportNumber5CalculatorForConstantK {
                     }
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                System.err.println("Ocorreu um erro de leitura: " + e.getClass().getSimpleName() + " - " + e.getMessage());;
             }
 
             double[] l1s = coluna1.stream().mapToDouble(Double::doubleValue).toArray();

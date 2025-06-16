@@ -42,7 +42,7 @@ public class ExperimentalPhysicsReport1Density {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Ocorreu um erro de leitura: " + e.getClass().getSimpleName() + " - " + e.getMessage());;
         }
         System.out.println();
 
