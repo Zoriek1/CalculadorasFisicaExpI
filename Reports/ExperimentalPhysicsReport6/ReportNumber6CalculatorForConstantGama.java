@@ -37,7 +37,7 @@ public class ReportNumber6CalculatorForConstantGama {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Ocorreu um erro de leitura: " + e.getClass().getSimpleName() + " - " + e.getMessage());;
+            System.err.println("Ocorreu um erro de leitura: " + e.getClass().getSimpleName() + " - " + e.getMessage());
         }
 
         double[] Deltax1 = coluna1.stream().mapToDouble(Double::doubleValue).toArray();
@@ -62,11 +62,11 @@ public class ReportNumber6CalculatorForConstantGama {
 
         //Delta x é incerteza do tipo a e h(1 e 2) é do tipo b.
 
-        double resolucãoH2 = 0.4; //em cm
-        double resolucãoH1 = 0.7; //em cm
+        double resolucaoH2 = 0.4; //em cm
+        double resolucaoH1 = 0.7; //em cm
 
-        double incertezaH2 = resolucãoH2/Math.sqrt(3);
-        double incertezaH1 = resolucãoH1/Math.sqrt(3);
+        double incertezaH2 = resolucaoH2/Math.sqrt(3);
+        double incertezaH1 = resolucaoH1/Math.sqrt(3);
 
         //media arritimética
 
@@ -116,13 +116,9 @@ public class ReportNumber6CalculatorForConstantGama {
 
         //incerteza de gama.
 
-        double incertezaGama1 = 0;
-        double incertezaGama2 = 0;
-        double incertezaGama3 = 0;
-
-        incertezaGama1 = gamaMedio1*Math.sqrt(Math.pow(incertezaH1/h1,2)+2*(Math.pow(incertezaDeltaX1/Delta1Medio,2)) + Math.pow(incertezaH2/h21,2));
-        incertezaGama2 = gamaMedio2*Math.sqrt(Math.pow(incertezaH1/h1,2)+2*(Math.pow(incertezaDeltaX2/Delta2Medio,2)) + Math.pow(incertezaH2/h22,2));
-        incertezaGama3 = gamaMedio3*Math.sqrt(Math.pow(incertezaH1/h1,2)+2*(Math.pow(incertezaDeltaX3/Delta3Medio,2)) + Math.pow(incertezaH2/h23,2));
+        double incertezaGama1 = gamaMedio1*Math.sqrt(Math.pow(incertezaH1/h1,2)+2*(Math.pow(incertezaDeltaX1/Delta1Medio,2)) + Math.pow(incertezaH2/h21,2));
+        double incertezaGama2 = gamaMedio2*Math.sqrt(Math.pow(incertezaH1/h1,2)+2*(Math.pow(incertezaDeltaX2/Delta2Medio,2)) + Math.pow(incertezaH2/h22,2));
+        double incertezaGama3 = gamaMedio3*Math.sqrt(Math.pow(incertezaH1/h1,2)+2*(Math.pow(incertezaDeltaX3/Delta3Medio,2)) + Math.pow(incertezaH2/h23,2));
 
 
         System.out.printf("Gama em h21: (%.4f ± %.4f)cm⁻¹\n", gamaMedio1, incertezaGama1);
