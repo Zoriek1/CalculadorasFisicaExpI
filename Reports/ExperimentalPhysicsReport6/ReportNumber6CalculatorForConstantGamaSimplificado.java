@@ -13,7 +13,7 @@
 
         public static void main(String[] args) {
 
-            String caminhoArquivo = "CSV/Csv Experimento 6 (substitua pelo seu)";
+            String caminhoArquivo = "C:\\Users\\caioc\\IdeaProjects\\untitled2\\CSV\\Exp06_Conservacao_da_Energia.csv";
             List<Double> coluna1 = new ArrayList<>();
             List<Double> coluna2 = new ArrayList<>();
             List<Double> coluna3 = new ArrayList<>();
@@ -40,7 +40,7 @@
                     }
                 }
             } catch (IOException e) {
-                System.err.println("Ocorreu um erro de leitura: " + e.getClass().getSimpleName() + " - " + e.getMessage());
+                e.printStackTrace();
             }
 
             double[] Deltax1 = coluna1.stream().mapToDouble(Double::doubleValue).toArray();
@@ -55,10 +55,13 @@
 
             //Incerteza tipo A Delta x
             double mediaDeltax1 = IncertezaTipoA.calcularMedia(Deltax1);
+            double desvioAmostralDeltaX1 = IncertezaTipoA.calcularDesvioPadrao(Deltax1);
             double incertezaDeltax1 = IncertezaTipoA.calcularIncertezaPadrao(Deltax1);
             double mediaDeltax2 = IncertezaTipoA.calcularMedia(Deltax2);
+            double desvioAmostralDeltaX2 = IncertezaTipoA.calcularDesvioPadrao(Deltax2);
             double incertezaDeltax2 = IncertezaTipoA.calcularIncertezaPadrao(Deltax2);
             double mediaDeltax3 = IncertezaTipoA.calcularMedia(Deltax3);
+            double desvioAmostralDeltaX3 = IncertezaTipoA.calcularDesvioPadrao(Deltax3);
             double incertezaDeltax3 = IncertezaTipoA.calcularIncertezaPadrao(Deltax3);
 
 
