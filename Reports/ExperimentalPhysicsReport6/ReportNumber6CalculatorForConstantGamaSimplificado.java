@@ -13,7 +13,7 @@
 
         public static void main(String[] args) {
 
-            String caminhoArquivo = "C:\\Users\\caioc\\IdeaProjects\\untitled2\\CSV\\Exp06_Conservacao_da_Energia.csv";
+            String caminhoArquivo = "CSV/Csv Experimento 6 (substitua pelo seu)";
             List<Double> coluna1 = new ArrayList<>();
             List<Double> coluna2 = new ArrayList<>();
             List<Double> coluna3 = new ArrayList<>();

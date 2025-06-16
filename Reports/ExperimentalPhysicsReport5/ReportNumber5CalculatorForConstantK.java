@@ -14,7 +14,7 @@ import java.util.List;
 public class ReportNumber5CalculatorForConstantK {
         public static void main(String[] args) {
 
-            String caminhoArquivo = "C:\\Users\\caioc\\Downloads\\Lab1_Exp_05_Const.Elastica.csv";
+            String caminhoArquivo = "CSV/Csv Experimento 5 (substitua pelo seu)";
             List<Double> coluna1 = new ArrayList<>();
             List<Double> coluna2 = new ArrayList<>();
             List<Double> coluna3 = new ArrayList<>();
