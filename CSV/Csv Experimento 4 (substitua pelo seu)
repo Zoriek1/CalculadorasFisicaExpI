@@ -1,9 +1,4 @@
-L1    ;1.11; Comprimentos do pêndulo 1 em metros
-L2    ;1.29; Comprimentos do pêndulo 2 em metros
-L3    ;1.49; Comprimentos do pêndulo 3 em metros
-DrL   ; 0.004 ; Resolucao da medida dos comprimentos do pêndulo em metros
-DrT   ; 0.01  ; Resolucao da medida dos períodos dos pêndulos em segundos
-P1-T  ; P2-T  ; P3-T
+P1-T; P2-T ; P3-T
 22.14;24.46;25.48
 19.00;22.63;24.10
 19.23;22.73;24.67
