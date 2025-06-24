@@ -43,8 +43,8 @@ public class ReportNumber7CalcularInercia {
 
         // Converter para arrays
 
-        double ValoresBaseArray[] = coluna1.stream().mapToDouble(Double :: doubleValue ).toArray();
-        double ValoresAnelArray[] = coluna2.stream().mapToDouble(Double :: doubleValue ).toArray();
+        double[] ValoresBaseArray = coluna1.stream().mapToDouble(Double :: doubleValue ).toArray();
+        double[] ValoresAnelArray = coluna2.stream().mapToDouble(Double :: doubleValue ).toArray();
 
 
         // Valores Importantes!
@@ -63,15 +63,54 @@ public class ReportNumber7CalcularInercia {
         double raioDoDiscoDoFio = diametroDoDiscoDeFio/2;
 
 
-
-        // Cáculos:
+        /*
+         * Calculando Inercia Experimental e a prevista para o anel.
+         */
 
         double mediaEmSegundosBase = IncertezaTipoA.calcularMedia(ValoresBaseArray);
         double mediaEmSegundosAnel = IncertezaTipoA.calcularMedia(ValoresAnelArray);
 
 
         double inerciaExperimental = (massaSuspensa*Math.pow(raioDoDiscoDoFio,2)/(2*alturaH2)*(Math.pow(mediaEmSegundosAnel,2)-Math.pow(mediaEmSegundosBase,2)));
-        System.out.println(inerciaExperimental);
+        double inerciaAnel = (massaDoAnel*(Math.pow(raioInternoAnel,2)+Math.pow(raioExternoAnel,2)))/2;
+
+
+        /**
+         * Calculando incerteza de cada variavel medida.
+         * 1° Declarando variaveis (resoluções)
+         **/
+
+        double resolucaoRegua1Medida = 0.001; // em metro
+        double resolucaoPaquimetro = 0.00005; // em metro
+        double resolucaoCronometro = 0.01; // em segundo
+        double resolucaoTrena = 0.005; // em metro
+        double resolucaoBalanca = 0.001; // em kilograma
+
+        /**
+         * Calculando incerteza de cada variavel medida.
+         * 2° Calculando a incerteza
+         **/
+
+        double incertezaRegua1Medida = IncertezaTipoB.calcularIncertezaPadrao(resolucaoRegua1Medida);
+        double incertezaPaquimetro = IncertezaTipoB.calcularIncertezaPadrao(resolucaoPaquimetro);
+        double incertezaCronometro = IncertezaTipoB.calcularIncertezaPadrao(resolucaoCronometro);
+        double incertezaTrena = IncertezaTipoB.calcularIncertezaPadrao(resolucaoTrena);
+        double incertezabalanca = IncertezaTipoB.calcularIncertezaPadrao(resolucaoBalanca);
+
+
+        System.out.printf("A incerteza para valores medidos na régua: %.5f metro \n", incertezaRegua1Medida);
+        System.out.printf("A incerteza para valores medidos na paquimêtro: %.6f metro\n", incertezaPaquimetro);
+        System.out.printf("A incerteza para valores medidos na Cronômetro: %.4f segundos \n", incertezaCronometro);
+        System.out.printf("A incerteza para valores medidos na trêna: %.4f metro \n", incertezaTrena);
+        System.out.printf("A incerteza para valores medidos na balança: %.4f metro \n", incertezabalanca);
+
+
+        double incertezaCombinadaIncerciaTeoricaAnel = Math.sqrt((Math.pow((incertezabalanca/2*massaDoAnel),2)+Math.pow((incertezaRegua1Medida/2*raioExternoAnel),2)+Math.pow((incertezaRegua1Medida/2*raioInternoAnel),2)));
+
+        System.out.printf("A sua inércia experimental é: (%.5f +/- %.5f)* 10⁻³m²*Kg \n", (inerciaAnel*1000),(incertezaCombinadaIncerciaTeoricaAnel*1000));
+
+
+
 
     }
 }
