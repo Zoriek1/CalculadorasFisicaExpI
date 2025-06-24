@@ -107,7 +107,7 @@ public class ReportNumber7CalcularInercia {
 
         double incertezaCombinadaIncerciaTeoricaAnel = Math.sqrt((Math.pow((incertezabalanca/2*massaDoAnel),2)+Math.pow((incertezaRegua1Medida/2*raioExternoAnel),2)+Math.pow((incertezaRegua1Medida/2*raioInternoAnel),2)));
 
-        System.out.printf("A sua inércia experimental é: (%.5f +/- %.5f)* 10⁻³m²*Kg \n", (inerciaAnel*1000),(incertezaCombinadaIncerciaTeoricaAnel*1000));
+        System.out.printf("A sua inércia experimental é: (%.2f +/- %.2f)* 10⁻³m²*Kg \n", (inerciaAnel*1000),(incertezaCombinadaIncerciaTeoricaAnel*1000));
 
 
 
