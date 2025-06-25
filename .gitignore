@@ -1,7 +1,5 @@
 ### IntelliJ IDEA ###
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
 .exit
 exit.pub
 .idea
@@ -16,8 +14,6 @@ untitled2.iml
 .springBeans
 .sts4-cache
 bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
 
 ### NetBeans ###
 /nbproject/private/
