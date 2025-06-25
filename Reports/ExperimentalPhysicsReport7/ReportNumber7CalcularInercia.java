@@ -10,8 +10,8 @@ import java.util.List;
 
 public class ReportNumber7CalcularInercia {
 
-    public static void main(String[] args) {
-        String caminhoArquivo = "CSV/Csv Experimento 7 (substitua pelo seu)";
+    public static void executar(String caminhoArquivo) {
+
 
         List<Double> coluna1 = new ArrayList<>();
         List<Double> coluna2 = new ArrayList<>();

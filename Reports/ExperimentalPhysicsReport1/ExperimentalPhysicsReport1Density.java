@@ -1,4 +1,5 @@
 package ExperimentalPhysicsReport1;
+
 import Incertezas.IncertezaTipoB;
 
 import java.io.BufferedReader;
@@ -9,9 +10,8 @@ import java.util.List;
 
 public class ExperimentalPhysicsReport1Density {
 
-    public static void main(String[] args) {
-        String caminhoArquivo = "CSV/Csv Experimento 1 (substitua pelo seu)";
 
+    public static void executar(String caminhoArquivo) {
         List<String> nomes = new ArrayList<>();
         List<String> descricoes = new ArrayList<>();
         List<Double> valores = new ArrayList<>();
@@ -43,7 +43,9 @@ public class ExperimentalPhysicsReport1Density {
             }
         } catch (IOException e) {
             System.err.println("Ocorreu um erro de leitura: " + e.getClass().getSimpleName() + " - " + e.getMessage());
+            return;
         }
+
         System.out.println();
 
         // Converter para arrays
@@ -52,16 +54,10 @@ public class ExperimentalPhysicsReport1Density {
         double[] GrandezaArray = valores.stream().mapToDouble(Double::doubleValue).toArray();
         double[] resolucoesArray = resolucoes.stream().mapToDouble(Double::doubleValue).toArray();
 
-
-
-        // Calculando p_1, com o volume diretamente e massa na balança:
-
+        // Calculando p_1
         double VolumeBecker = GrandezaArray[1];
         double massaCilindro = GrandezaArray[0];
-
-        double Densiade1 = massaCilindro/VolumeBecker;
-
-        // incerteza p_1
+        double Densiade1 = massaCilindro / VolumeBecker;
 
         double resolucaoBecker = resolucoesArray[1];
         double resolucaoMassaCilindro = resolucoesArray[0];
@@ -69,70 +65,76 @@ public class ExperimentalPhysicsReport1Density {
         double incertezaBecker = IncertezaTipoB.calcularIncertezaPadrao(resolucaoBecker);
         double incertezaMassaCilindro = IncertezaTipoB.calcularIncertezaPadrao(resolucaoMassaCilindro);
 
-        double incertezaCombinadaDensidade1 = Densiade1*(Math.sqrt(Math.pow(incertezaBecker/VolumeBecker,2)+Math.pow(incertezaMassaCilindro/massaCilindro,2)));
+        double incertezaCombinadaDensidade1 = Densiade1 * Math.sqrt(
+                Math.pow(incertezaBecker / VolumeBecker, 2) +
+                        Math.pow(incertezaMassaCilindro / massaCilindro, 2)
+        );
 
+        System.out.printf("Densidade_1 = %.2f +/- %.2f g/cm^3 \n", Densiade1, incertezaCombinadaDensidade1);
 
-        System.out.printf("Densidade_1 = %.2f +/- %.2f g/cm^3 \n",Densiade1, incertezaCombinadaDensidade1);
+        // p_2
+        double AlturaFitaMetricaCilindro = GrandezaArray[4] / 10;
+        double CircunerenciaFitaMetricaCilindro = GrandezaArray[8] / 10;
+        double densidade2 = (4 * Math.PI) * massaCilindro /
+                (Math.pow(CircunerenciaFitaMetricaCilindro, 2) * AlturaFitaMetricaCilindro);
 
-        //Calculando P_2, fita metrica.
-
-        double AlturaFitaMetricaCilindro = GrandezaArray[4]/10; // de mm pra centimetro
-        double CircunerenciaFitaMetricaCilindro = GrandezaArray[8]/10; // de mm pra centimetro
-
-        double densidade2 = (4*Math.PI)*massaCilindro/(Math.pow(CircunerenciaFitaMetricaCilindro,2)*AlturaFitaMetricaCilindro);
-
-        // incertezas de p_2
-
-        double resolucaoFitaMetrica = resolucoesArray[7]/10; //0,1cm ao inves de 1mm.
+        double resolucaoFitaMetrica = resolucoesArray[7] / 10;
         double incertezaFitaMetrica = IncertezaTipoB.calcularIncertezaPadrao(resolucaoFitaMetrica);
 
-        double incertezaCombinadaDensidade2 = densidade2*(Math.sqrt(2*Math.pow(incertezaFitaMetrica/CircunerenciaFitaMetricaCilindro,2)+Math.pow(incertezaMassaCilindro/massaCilindro,2)+Math.pow(incertezaFitaMetrica/AlturaFitaMetricaCilindro,2)));
+        double incertezaCombinadaDensidade2 = densidade2 * Math.sqrt(
+                2 * Math.pow(incertezaFitaMetrica / CircunerenciaFitaMetricaCilindro, 2) +
+                        Math.pow(incertezaMassaCilindro / massaCilindro, 2) +
+                        Math.pow(incertezaFitaMetrica / AlturaFitaMetricaCilindro, 2)
+        );
 
-        System.out.printf("Densidade_2 = %.2f +/- %.2f g/cm^3 \n",densidade2, incertezaCombinadaDensidade2);
+        System.out.printf("Densidade_2 = %.2f +/- %.2f g/cm^3 \n", densidade2, incertezaCombinadaDensidade2);
 
-        //Calculando p_3
-
-        double alturaCilindroPaquimetro = GrandezaArray[2]/10; // mm para cm
-        double diametroCilindroPaquimetro = GrandezaArray[5]/10; // mm para cm
-
+        // p_3
+        double alturaCilindroPaquimetro = GrandezaArray[2] / 10;
+        double diametroCilindroPaquimetro = GrandezaArray[5] / 10;
         double densidade3 = (4 * massaCilindro) / (Math.PI * Math.pow(diametroCilindroPaquimetro, 2) * alturaCilindroPaquimetro);
 
-
-        // incertezas p3
-
-        double resolucaoPaquimetro = resolucoesArray[5]/10;
+        double resolucaoPaquimetro = resolucoesArray[5] / 10;
         double incertezaPaquimetro = IncertezaTipoB.calcularIncertezaPadrao(resolucaoPaquimetro);
 
-        double incertezaCombinadaDensidade3 = densidade3*(Math.sqrt(2*Math.pow(incertezaPaquimetro/diametroCilindroPaquimetro,2)+Math.pow(incertezaMassaCilindro/massaCilindro,2)+Math.pow(incertezaPaquimetro/alturaCilindroPaquimetro,2)));
+        double incertezaCombinadaDensidade3 = densidade3 * Math.sqrt(
+                2 * Math.pow(incertezaPaquimetro / diametroCilindroPaquimetro, 2) +
+                        Math.pow(incertezaMassaCilindro / massaCilindro, 2) +
+                        Math.pow(incertezaPaquimetro / alturaCilindroPaquimetro, 2)
+        );
 
-        System.out.printf("Densidade_2 = %.2f +/- %.2f g/cm^3 \n",densidade3, incertezaCombinadaDensidade3);
-
+        System.out.printf("Densidade_3 = %.2f +/- %.2f g/cm^3 \n", densidade3, incertezaCombinadaDensidade3);
 
         System.out.println();
-        //Teste De Compatibilidade
 
-        double CompatibilidadeP1P2 = Math.abs(Densiade1 - densidade2)/Math.sqrt(Math.pow(incertezaCombinadaDensidade1,2)+Math.pow(incertezaCombinadaDensidade2,2));
-        double CompatibilidadeP1P3 = Math.abs(Densiade1 - densidade3)/Math.sqrt(Math.pow(incertezaCombinadaDensidade1,2)+Math.pow(incertezaCombinadaDensidade3,2));
-        double CompatibilidadeP2P3 = Math.abs(densidade2 - densidade3)/Math.sqrt(Math.pow(incertezaCombinadaDensidade2,2)+Math.pow(incertezaCombinadaDensidade3,2));
+        // Teste de compatibilidade
+        double CompatibilidadeP1P2 = Math.abs(Densiade1 - densidade2) /
+                Math.sqrt(Math.pow(incertezaCombinadaDensidade1, 2) + Math.pow(incertezaCombinadaDensidade2, 2));
+        double CompatibilidadeP1P3 = Math.abs(Densiade1 - densidade3) /
+                Math.sqrt(Math.pow(incertezaCombinadaDensidade1, 2) + Math.pow(incertezaCombinadaDensidade3, 2));
+        double CompatibilidadeP2P3 = Math.abs(densidade2 - densidade3) /
+                Math.sqrt(Math.pow(incertezaCombinadaDensidade2, 2) + Math.pow(incertezaCombinadaDensidade3, 2));
 
-        if (CompatibilidadeP1P2 < 2.5 && CompatibilidadeP2P3 < 2.5 && CompatibilidadeP1P3 < 2.5){
-            System.out.println("Os valores são compátiveis e seu Valor K é: ");
-            System.out.println("CompatibilidadeP1P2: " + CompatibilidadeP1P2);
-            System.out.println("CompatibilidadeP2P3: "+ CompatibilidadeP2P3);
-            System.out.println("CompatibilidadeP1P3: "+ CompatibilidadeP1P3);
+        if (CompatibilidadeP1P2 < 2.5 && CompatibilidadeP2P3 < 2.5 && CompatibilidadeP1P3 < 2.5) {
+            System.out.println("Os valores são compatíveis e seu Valor K é:");
+        } else {
+            System.out.println("Os valores não são compatíveis e seu Valor K é:");
         }
-        else {
-            System.out.println("Os Valores não são compátiveis e seu valor K é");
-            System.out.println("CompatibilidadeP1P2: " + CompatibilidadeP1P2);
-            System.out.println("CompatibilidadeP2P3: "+ CompatibilidadeP2P3);
-            System.out.println("CompatibilidadeP1P3: "+ CompatibilidadeP1P3);
-        }
+
+        System.out.println("Compatibilidade P1 vs P2: " + CompatibilidadeP1P2);
+        System.out.println("Compatibilidade P1 vs P3: " + CompatibilidadeP1P3);
+        System.out.println("Compatibilidade P2 vs P3: " + CompatibilidadeP2P3);
+
         System.out.println();
-        System.out.println("======================================================= Descrições dos arrays =======================================================");
-        System.out.println();
-        // Descrições
+        System.out.println("==================== Dados lidos ====================");
+
         for (int i = 0; i < nomesArray.length; i++) {
-            System.out.println("nomes[" + i + "] = " + nomesArray[i] + "; Grandeza: [" + i + "] = " + GrandezaArray[i]+ "; resolucoes[" + i + "] = " + resolucoesArray[i] + "; descrição: [" + i + "] = " + DescricoesArray[i]);
+            System.out.println("nome[" + i + "]: " + nomesArray[i]
+                    + " | valor: " + GrandezaArray[i]
+                    + " | resolução: " + resolucoesArray[i]
+                    + " | descrição: " + DescricoesArray[i]);
         }
+
+        System.out.println();
     }
 }

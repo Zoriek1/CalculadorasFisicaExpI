@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExperimentalPhysicsReport2LinearMoment {
-    public static void main(String[] args) {
 
-        String caminhoArquivo = "CSV/Csv Experimento 2 (substitua pelo seu)";
+    public static void executar(String caminhoArquivo) {
+
         List<Double> coluna1 = new ArrayList<>();
         List<Double> coluna2 = new ArrayList<>();
         List<Double> coluna3 = new ArrayList<>();

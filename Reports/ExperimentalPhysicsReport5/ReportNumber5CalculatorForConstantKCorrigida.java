@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReportNumber5CalculatorForConstantKCorrigida {
-    public static void main(String[] args) {
+    public static void executar(String caminhoArquivo) {
 
-        String caminhoArquivo = "CSV/Csv Experimento 6 (substitua pelo seu)";
+
         List<Double> coluna1 = new ArrayList<>();
         List<Double> coluna2 = new ArrayList<>();
         List<Double> coluna3 = new ArrayList<>();

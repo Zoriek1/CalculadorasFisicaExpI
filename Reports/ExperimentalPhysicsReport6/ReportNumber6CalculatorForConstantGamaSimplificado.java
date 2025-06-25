@@ -11,9 +11,9 @@
 
     public class ReportNumber6CalculatorForConstantGamaSimplificado {
 
-        public static void main(String[] args) {
+        public static void executar(String caminhoArquivo) {
 
-            String caminhoArquivo = "C:\\Users\\caioc\\IdeaProjects\\untitled2\\CSV\\Exp06_Conservacao_da_Energia.csv";
+
             List<Double> coluna1 = new ArrayList<>();
             List<Double> coluna2 = new ArrayList<>();
             List<Double> coluna3 = new ArrayList<>();

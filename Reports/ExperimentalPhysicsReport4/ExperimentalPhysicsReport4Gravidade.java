@@ -10,8 +10,8 @@ import Incertezas.IncertezaTipoA;
 import Incertezas.IncertezaTipoB;
 
 public class ExperimentalPhysicsReport4Gravidade {
-    public static void main(String[] args) {
-        String caminhoArquivo = "CSV/Csv Experimento 4 (substitua pelo seu)";
+    public static void executar(String caminhoArquivo) {
+
 
         List<Double> coluna1 = new ArrayList<>();
         List<Double> coluna2 = new ArrayList<>();
