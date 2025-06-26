@@ -1,4 +1,4 @@
-package ExperimentalPhysicsReport2;
+package Reports.ExperimentalPhysicsReport2;
 import Incertezas.IncertezaTipoA;
 import Incertezas.IncertezaTipoB;
 

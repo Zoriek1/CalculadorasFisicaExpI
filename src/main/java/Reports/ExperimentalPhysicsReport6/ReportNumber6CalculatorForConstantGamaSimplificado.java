@@ -1,4 +1,4 @@
-    package ExperimentalPhysicsReport6;
+    package Reports.ExperimentalPhysicsReport6;
     import ExperimentalPhysicsReport6.LinearRegression.LinearRegression;
     import Incertezas.IncertezaTipoA;
     import Incertezas.IncertezaTipoB;

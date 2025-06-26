@@ -1,4 +1,4 @@
-package ExperimentalPhysicsReport5;
+package Reports.ExperimentalPhysicsReport5;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

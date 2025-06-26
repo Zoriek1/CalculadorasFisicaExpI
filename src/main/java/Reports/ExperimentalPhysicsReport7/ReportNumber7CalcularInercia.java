@@ -1,4 +1,4 @@
-package ExperimentalPhysicsReport7;
+package Reports.ExperimentalPhysicsReport7;
 import Incertezas.IncertezaTipoA;
 import Incertezas.IncertezaTipoB;
 
@@ -96,6 +96,7 @@ public class ReportNumber7CalcularInercia {
         double incertezaCronometro = IncertezaTipoB.calcularIncertezaPadrao(resolucaoCronometro);
         double incertezaTrena = IncertezaTipoB.calcularIncertezaPadrao(resolucaoTrena);
         double incertezabalanca = IncertezaTipoB.calcularIncertezaPadrao(resolucaoBalanca);
+        double incertezaGravidade = 0.000023;
 
 
         System.out.printf("A incerteza para valores medidos na régua: %.5f metro \n", incertezaRegua1Medida);
@@ -107,8 +108,11 @@ public class ReportNumber7CalcularInercia {
 
         double incertezaCombinadaIncerciaTeoricaAnel = inerciaAnel*Math.sqrt((Math.pow((incertezabalanca/2*massaDoAnel),2)+Math.pow((incertezaRegua1Medida/raioExternoAnel),2)+Math.pow((incertezaRegua1Medida/raioInternoAnel),2)));
 
-        System.out.printf("A sua inércia experimental é: (%.2f +/- %.2f)* 10⁻³m²*Kg \n", (inerciaAnel*1000),(incertezaCombinadaIncerciaTeoricaAnel*1000));
+        System.out.printf("A sua inércia Teórica é: (%.2f +/- %.2f)* 10⁻³m²*Kg \n", (inerciaAnel*1000),(incertezaCombinadaIncerciaTeoricaAnel*1000));
 
+        double incertezaCombinadaExperimental = inerciaExperimental*Math.sqrt(Math.pow(incertezaGravidade/gravidade,2)+Math.pow(incertezabalanca/massaSuspensa,2)+Math.pow(incertezaTrena/alturaH2,2)+4*Math.pow(incertezaPaquimetro/raioDoDiscoDoFio,2)+4*(Math.pow(mediaEmSegundosAnel,2)*Math.pow(incertezaCronometro,2)+Math.pow(mediaEmSegundosBase,2)*Math.pow(incertezaCronometro,2))/Math.pow(Math.pow(mediaEmSegundosAnel,2)-Math.pow(mediaEmSegundosBase,2),2));
+        System.out.println();
+        System.out.printf("A sua inércia Experimental é: (%.2f +/- %.2f)* 10⁻³m²*Kg \n", (inerciaExperimental*1000),(incertezaCombinadaExperimental*1000));
 
 
 
