@@ -121,9 +121,9 @@ public class ExperimentalPhysicsReport1Density {
             System.out.println("Os valores não são compatíveis e seu Valor K é:");
         }
 
-        System.out.println("Compatibilidade P1 vs P2: " + CompatibilidadeP1P2);
-        System.out.println("Compatibilidade P1 vs P3: " + CompatibilidadeP1P3);
-        System.out.println("Compatibilidade P2 vs P3: " + CompatibilidadeP2P3);
+        System.out.println("Compatibilidade Volume Becker vs Volume com Fita métrica: " + CompatibilidadeP1P2);
+        System.out.println("Compatibilidade Volume Becker vs Volume com Paquímetro: " + CompatibilidadeP1P3);
+        System.out.println("Compatibilidade Volume com Fita métrica vs Volume com Paquímetro: " + CompatibilidadeP2P3);
 
         System.out.println();
         System.out.println("==================== Dados lidos ====================");

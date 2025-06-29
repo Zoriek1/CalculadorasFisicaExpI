@@ -1,4 +1,10 @@
+package Reports;
+
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 import java.awt.event.*;
 import java.io.*;
 import Reports.ExperimentalPhysicsReport1.ExperimentalPhysicsReport1Density;
@@ -116,13 +122,29 @@ public class InterfaceRelatorios {
         resultadoFrame.setSize(600, 500);
         resultadoFrame.setLocationRelativeTo(null);
 
-        JTextArea areaTexto = new JTextArea(conteudo);
-        areaTexto.setEditable(false);
-        areaTexto.setCaretPosition(0);
+        JTextPane textPane = new JTextPane();
+        textPane.setEditable(false);
 
-        JScrollPane scroll = new JScrollPane(areaTexto);
+        // Estilo para centralizar o texto
+        SimpleAttributeSet attrs = new SimpleAttributeSet();
+        StyleConstants.setAlignment(attrs, StyleConstants.ALIGN_CENTER);
+        StyleConstants.setFontFamily(attrs, "Monospaced");
+        StyleConstants.setFontSize(attrs, 14);
+
+        // Aplicar estilo
+        StyledDocument doc = textPane.getStyledDocument();
+        try {
+            doc.insertString(doc.getLength(), conteudo, attrs);
+            doc.setParagraphAttributes(0, doc.getLength(), attrs, false);
+        } catch (BadLocationException e) {
+            e.printStackTrace();
+        }
+
+        JScrollPane scroll = new JScrollPane(textPane);
         resultadoFrame.add(scroll);
 
         resultadoFrame.setVisible(true);
     }
+
 }
+
