@@ -5,6 +5,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import Reports.ExperimentalPhysicsReport1.ExperimentalPhysicsReport1Density;
@@ -52,17 +53,21 @@ public class InterfaceRelatorios {
         frame.add(status);
 
         botaoSelecionarCSV.addActionListener(e -> {
-            JFileChooser fileChooser = new JFileChooser();
-            int resultado = fileChooser.showOpenDialog(null);
+            FileDialog fileDialog = new FileDialog(frame, "Selecione o arquivo CSV", FileDialog.LOAD);
+            fileDialog.setFile("*.csv"); // para mostrar apenas arquivos CSV
+            fileDialog.setVisible(true);
 
-            if (resultado == JFileChooser.APPROVE_OPTION) {
-                File arquivo = fileChooser.getSelectedFile();
-                caminhoCSVSelecionado = arquivo.getAbsolutePath();
-                labelArquivo.setText("Arquivo: " + arquivo.getName());
+            String directory = fileDialog.getDirectory();
+            String file = fileDialog.getFile();
+
+            if (file != null) {
+                caminhoCSVSelecionado = directory + file;
+                labelArquivo.setText("Arquivo: " + file);
                 botaoGerar.setEnabled(true);
                 status.setText("");
             }
         });
+
 
         botaoGerar.addActionListener(e -> {
             if (caminhoCSVSelecionado == null) {
