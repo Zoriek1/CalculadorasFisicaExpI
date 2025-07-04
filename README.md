@@ -8,4 +8,5 @@ Caso não saiba usar git, o comando no terminal será:
 git clone https://github.com/Zoriek1/CalculadorasFisicaExpI.git
 
 Ele clona a versão mais recente deste repositório.
-Para dar certo o nome da pasta deve ser CalculadorasFisicaExpI, sem ser uma subpasta, ou seja a pasta mãe deve ser essa, e não pode estar dentro de outra posta com outro src/java;
+Para dar certo o nome da pasta deve ser CalculadorasFisicaExpI, sem ser uma subpasta, ou seja a pasta mãe deve ser essa, e não pode estar dentro de outra pasta com outro src/java.
+Qualquer erro de compilação normalmente é resolvido deixando o csv limpo, somente com os valores.
