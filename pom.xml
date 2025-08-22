@@ -57,4 +57,39 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>windows-exe</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                        <artifactId>launch4j-maven-plugin</artifactId>
+                        <version>1.7.25</version>
+                        <configuration>
+                            <headerType>gui</headerType>
+                            <outfile>${project.build.directory}/${project.artifactId}.exe</outfile>
+                                                                <jar>${project.artifactId}-${project.version}-jar-with-dependencies.jar</jar>
+                            <classPath>
+                                <mainClass>Reports.InterfaceRelatorios</mainClass>
+                            </classPath>
+                            <jre>
+                                <minVersion>17</minVersion>
+                            </jre>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>l4j-generate-exe</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>launch4j</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
